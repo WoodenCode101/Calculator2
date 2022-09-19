@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Calculator</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: /*#ccffcc*/white;
+        }
+        
+        .calculatorBody{
+            background-color:aliceblue;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: -30px 30px 10px  rgba(0,0,0,0.2),
+                       inset -2px 2px 8px rgba(0,0,0,0.4),
+                       inset 2px -2px 8px rgba(0,0,0,0.4);
+            /* border: 1px solid rgb(169, 245, 94); */
+        }
+        #screen{
+            width: 230px;
+            height: 125px;
+            margin-left: 5px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            background-color: rgb(192, 230, 231);
+            
+            border-radius: 7px;
+            border: none;
+            font-size: 30px;
+            font-family: poppins;
+            text-align: right;
+            box-shadow: inset 1px 1px 3px 0px,
+                         inset -1px -1px 0px ;
+            
+        }
+        button{
+            width: 50px;
+            height: 50px;
+            margin: 3px;
+            font-size: 20px;
+            border-radius: 50%;
+            border: none;
+            box-shadow: -2px -2px 5px rgba(0,0,0,0.8),
+                    inset  4px 4px 5px rgba(255,255,255,0.8),
+                    inset  -2px -2px 5px rgba(0,0,0,0.6);        
+            background-color: rgba(216, 214, 214, 0.5);
+        }
+        button:hover{
+            color: dodgerblue;
+            background-color: black;
+            box-shadow: 3px 3px 5px /*rgb(185, 182, 182)*/ rgba(255,255,255,0.5);
+        }
+        .sign{
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 88px;
+            height: 37px;
+            border-radius: 6px;
+            background-color: white;
+            border: 2px solid rgb(169, 245, 94);
+            
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            font-family: poppins;
+            box-shadow: 2px 2px 3px rgba(169, 245, 94,0.5),
+                        inset 2px 2px 3px rgba(169, 245, 94,0.5);
+        }
+        .sign:hover{
+            background-color: transparent;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="calculatorBody">
+        <table>
+            <tr>
+                <input type="text" id="screen" >
+            </tr>
+            <tr>
+                <td><button onclick="ClickMe('(')">(</button></td> 
+                <td><button onclick="ClickMe(')')">)</button></td>
+                <td><button onclick="DeleteMe()">C</button></td> <!-- c click korle delete function nilam-->
+                <td><button onclick="ClickMe('/')">/</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="ClickMe('7')">7</button></td>
+                <td><button onclick="ClickMe('8')">8</button></td>
+                <td><button onclick="ClickMe('9')">9</button></td>
+                <td><button onclick="ClickMe('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="ClickMe('4')">4</button></td>
+                <td><button onclick="ClickMe('5')">5</button></td>
+                <td><button onclick="ClickMe('6')">6</button></td>
+                <td><button onclick="ClickMe('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="ClickMe('1')">1</button></td>
+                <td><button onclick="ClickMe('2')">2</button></td>
+                <td><button onclick="ClickMe('3')">3</button></td>
+                <td><button onclick="ClickMe('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="ClickMe('0')">0</button></td>
+                <td><button onclick="ClickMe('00')">00</button></td> <!-- ekhane % o dite pari tale modius  division kora jabe -->
+                <td><button onclick="ClickMe('.')">.</button></td>
+                <td><button onclick="Answer()">=</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="div2">
+        <button class="sign" onclick="ClickMe('~Sayeed.')">~Sayeed.</button>
+    </div>
+
+
+
+
+
+
+
+
+    <script>
+        function DeleteMe() {
+            document.getElementById("screen").value = ""
+        }
+        function ClickMe(NewValue) {
+            document.getElementById("screen").value += NewValue; // = er age j + ta jodi ot ana de tale shudhu akta kore letter likhbe trpr er ta r likhbe na ...ota mane => NewValue = NewValue +1
+        }
+        function Answer() {
+            var a = document.getElementById("screen").value ;
+            var b = eval(a);
+            document.getElementById("screen").value = b;
+        }
+    </script>
+
+
+</body>
+</html>
